@@ -1,0 +1,22 @@
+{
+  "name": "salibhdr/typhcache",
+  "description": "A laravel package for caching model and routes automatically with just few settings",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Salar Bahador",
+      "email": "bahador.salar@gmail.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "SaliBhdr\\TyphoonCache\\": "src/"
+    },
+    "files": [
+      "src/helpers.php"
+    ]
+  },
+  "require": {
+    "Illuminate/Support": "~5"
+  }
+}
