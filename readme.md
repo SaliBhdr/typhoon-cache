@@ -34,7 +34,7 @@ Available cache methods in this package:
 
 Configuration File (required)
 
-After installing the Typhoon Cache library, register the EloquentFilter\ServiceProvider::class in your config/app.php configuration file:
+After installing the Typhoon Cache library, register the SaliBhdr\TyphoonCache\ServiceProviders\TyphCacheServiceProvider::class in your config/app.php configuration file:
 ```sh
 'providers' => [
 
@@ -397,7 +397,7 @@ You can retrieve data directly from cache storage with `retrieveModel()` :
        
         // first parametr is the model that you the data is related to.
         // second argument is the records id 
-        // third argument (optional) : if data is is_based_on_user option in config file is set to true
+        // third argument (optional) : if is_based_on_user option in config file is set to true
         
           $book = TyphCache::retrieveModel(Book::class,$request->get('book_id'),auth()->id());
         
