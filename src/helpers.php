@@ -14,7 +14,7 @@ if (!function_exists('typhConfig')) {
      * @param  string $path
      * @return mixed
      */
-    function typhConfig($path = '',$default = null)
+    function typhConfig($path = "",$default = null)
     {
         if ($path && is_string($path)) {
             $path = 'typhoon-cache.' . $path;
@@ -34,7 +34,7 @@ if (!function_exists('typhRouteConfig')) {
      * @param string $route
      * @return mixed
      */
-    function typhRouteConfig(string $route = null, $path = '')
+    function typhRouteConfig(string $route = null, $path = "")
     {
 
         if (is_null($route)) {

@@ -109,6 +109,10 @@ trait CacheableModel
      */
     public function isCacheActive($config = null)
     {
+        if(!$this->shouldBeCasheabel()){
+            return false;
+        }
+
         if (is_null($config)) {
             $config = typhConfig();
         }
@@ -122,6 +126,17 @@ trait CacheableModel
 
 
         return false;
+    }
+
+
+    /**
+     * Determine if the model should be searchable.
+     *
+     * @return bool
+     */
+    public function shouldBeCasheabel() : bool
+    {
+        return true;
     }
 
     /**
@@ -158,7 +173,7 @@ trait CacheableModel
      */
     public function getCacheKey($record_id = null, $user_id = null)
     {
-        if (is_null($this->modelCacheConfig['cache_key']) || trim($this->modelCacheConfig['cache_key']) == '') {
+        if (is_null($this->modelCacheConfig['cache_key']) || trim($this->modelCacheConfig['cache_key']) == "") {
             $key = strtolower($this->getTable());
         } else {
             $key = $this->modelCacheConfig['cache_key'];
@@ -173,8 +188,8 @@ trait CacheableModel
         if ($this->modelCacheConfig['is_based_on_user']) {
             if (!is_null($user_id)) {
                 $key .= '_' . $user_id;
-            } elseif (auth()->check()) {
-                $key .= '_' . auth()->id();
+            } elseif ($this->getAuth()->check()) {
+                $key .= '_' . $this->getAuth()->id();
             }
         }
 
@@ -254,4 +269,7 @@ trait CacheableModel
         return $this->modelCacheConfig;
     }
 
+    public function getAuth(){
+        return auth();
+    }
 }
