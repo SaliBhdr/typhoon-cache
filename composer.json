@@ -1,5 +1,5 @@
 {
-  "name": "salibhdr/typhcache",
+  "name": "salibhdr/typhooncache",
   "description": "A laravel package for caching model and routes automatically with just few settings",
   "license": "MIT",
   "authors": [

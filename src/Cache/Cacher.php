@@ -72,7 +72,7 @@ class Cacher
         }
 
         if (!is_null($route) && isset($config['routes'][$route])) {
-            $key = '';
+            $key = "";
 
             $routeConfig = $config['routes'][$route];
 
@@ -84,8 +84,8 @@ class Cacher
             if ($routeConfig['is_based_on_user']) {
                 if (!is_null($user_id)) {
                     $key .= '_' . $user_id;
-                } elseif (auth()->check()) {
-                    $key .= '_' . auth()->id();
+                } elseif ($this->getAuth()->check()) {
+                    $key .= '_' . $this->getAuth()->id();
                 }
             }
         }
@@ -213,4 +213,8 @@ class Cacher
         return $this;
     }
 
+
+    protected function getAuth(){
+        return auth();
+    }
 }

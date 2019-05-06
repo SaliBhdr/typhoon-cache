@@ -69,7 +69,7 @@ return [
         //            'is_cache_active' => true, // true,false
         //            'cache-ttl' => -1, // Defaults to 1 hour. in minutes || if (null)->default or (-1)->forever
         //            'is_based_on_user' => true, //true,false
-        //            'prefix' => ''
+        //            'prefix' => ""
         //        ]   ,
 
     ]
