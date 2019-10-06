@@ -26,7 +26,7 @@ Available cache methods in this package:
 
 #### Install Through Composer
 ```sh
- $ composer require SaliBhdr\TyphoonCache
+ $ composer require salibhdr/typhooncache
 ```
 ##### Laravel
 
