@@ -9,7 +9,7 @@
 namespace SaliBhdr\TyphoonCache\Observers;
 
 use Illuminate\Database\Eloquent\Model;
-use SaliBhdr\TyphoonCache\TyphCache;
+use SaliBhdr\TyphoonCache\TyphoonCache;
 
 class ModelObserver
 {
@@ -143,9 +143,9 @@ class ModelObserver
         if ($model->isCacheActive()) {
 
             if ($model->isCacheDeleteEventActive($event)) {
-                TyphCache::forgetModelCache($model);
+                TyphoonCache::forgetModelCache($model);
             } elseif ($model->isCacheEventActive($event)) {
-                TyphCache::cacheModel($model);
+                TyphoonCache::cacheModel($model);
             }
         }
     }

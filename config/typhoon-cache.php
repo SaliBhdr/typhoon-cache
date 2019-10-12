@@ -7,7 +7,7 @@
  */
 
 return [
-    'cache-method' => \SaliBhdr\TyphoonCache\TyphCache::dispatcherEventMethod, // trait,observer (change it to observer if you have another observer trait like laravel scout)
+    'cache-method' => \SaliBhdr\TyphoonCache\TyphoonCache::dispatcherEventMethod, // trait,observer (change it to observer if you have another observer trait like laravel scout)
     'default-cache-ttl' => 45,// Defaults to 1 hour. in minutes || if (null)->default or (-1)->forever
     'is_cache_active' => true,
     'models' => [

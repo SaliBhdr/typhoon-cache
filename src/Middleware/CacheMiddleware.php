@@ -7,7 +7,7 @@ use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Contracts\Auth\Factory as Auth;
 use SaliBhdr\TyphoonCache\Helpers\GeneralHelper;
-use SaliBhdr\TyphoonCache\TyphCache;
+use SaliBhdr\TyphoonCache\TyphoonCache;
 
 class CacheMiddleware
 {
@@ -36,18 +36,19 @@ class CacheMiddleware
      * @param  \Closure $next
      * @param  string|null $guard
      * @return mixed
+     * @throws \SaliBhdr\TyphoonCache\Exceptions\CacheKeyNotSetException
      */
     public function handle($request, Closure $next, $guard = null)
     {
 
         if (GeneralHelper::isRouteCacheable(getRequestUri())) {
 
-            $cachedResponse = TyphCache::retrieveRouteCache(getRequestUri(true), $this->auth->guard($guard)->id());
+            $cachedResponse = TyphoonCache::retrieveRouteCache(getRequestUri(true), $this->auth->guard($guard)->id());
 
             if (isset($cachedResponse)) {
                 return $cachedResponse;
             } else {
-                TyphCache::cacheRoute(getRequestUri(true), $next($request), $this->auth->guard($guard)->id());
+                TyphoonCache::cacheRoute(getRequestUri(true), $next($request), $this->auth->guard($guard)->id());
             }
         }
 

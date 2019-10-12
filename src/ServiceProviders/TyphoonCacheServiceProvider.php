@@ -4,7 +4,7 @@ namespace SaliBhdr\TyphoonCache\ServiceProviders;
 
 use SaliBhdr\TyphoonCache\Observers\ModelObserver;
 use Illuminate\Support\ServiceProvider;
-use SaliBhdr\TyphoonCache\TyphCache;
+use SaliBhdr\TyphoonCache\TyphoonCache;
 
 class TyphoonCacheServiceProvider extends ServiceProvider
 {
@@ -31,9 +31,9 @@ class TyphoonCacheServiceProvider extends ServiceProvider
 
         $config = typhConfig();
 
-        if ($config['cache-method'] == TyphCache::dispatcherEventMethod)
+        if ($config['cache-method'] == TyphoonCache::dispatcherEventMethod)
             $this->bootEventListeners();
-        elseif ($config['cache-method'] == TyphCache::observerMethod) {
+        elseif ($config['cache-method'] == TyphoonCache::observerMethod) {
             $this->bootObserver($config);
         }
     }
@@ -77,7 +77,7 @@ class TyphoonCacheServiceProvider extends ServiceProvider
         $this->registerHelpers();
 
         $this->app->bind('TyphoonCache', function () {
-            return new TyphCache;
+            return new TyphoonCache;
         });
 
         $this->app->middleware([
