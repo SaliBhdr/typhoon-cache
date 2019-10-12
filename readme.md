@@ -2,6 +2,11 @@
 
 ![Salibhdr|typhoon](https://drive.google.com/a/domain.com/thumbnail?id=12yntFCiYIGJzI9FMUaF9cRtXKb0rXh9X)
 
+[![Total Downloads](https://poser.pugx.org/SaliBhdr/typhoon-cache/downloads)](https://packagist.org/packages/SaliBhdr/typhoon-cache)
+[![Latest Stable Version](https://poser.pugx.org/SaliBhdr/typhoon-cache/v/stable)](https://packagist.org/packages/SaliBhdr/typhoon-cache)
+[![Latest Unstable Version](https://poser.pugx.org/SaliBhdr/typhoon-cache/v/unstable)](https://packagist.org/packages/SaliBhdr/typhoon-cache)
+[![License](https://poser.pugx.org/SaliBhdr/typhoon-cache/license)](https://packagist.org/packages/SaliBhdr/typhoon-cache)
+
 ## Introduction
 
 
@@ -13,21 +18,23 @@ Available cache methods in this package:
   1) **Eloquent Model cache** : Caches model data
   2) **Route cache** : Caches routes with response data
 
-## Configuration
+## Installation
 
-
-#### Install Through Composer
-```sh
- $ composer require salibhdr/typhooncache
+#### Install with Composer
+```php
+ $ composer require salibhdr/typhoon-cache
 ```
+
+## Getting started
+
 ##### Laravel
 
 ----
 
 Configuration File (required)
 
-After installing the Typhoon Cache library, register the SaliBhdr\TyphoonCache\ServiceProviders\TyphCacheServiceProvider::class in your config/app.php configuration file:
-```sh
+After installing the Typhoon Cache library, register the SaliBhdr\TyphoonCache\ServiceProviders\TyphoonCacheServiceProvider::class in your config/app.php configuration file:
+```php
 'providers' => [
 
      // Other service providers...
@@ -37,8 +44,8 @@ After installing the Typhoon Cache library, register the SaliBhdr\TyphoonCache\S
 ```
 
 Copy the package config to your local config with the publish command:
-```sh
-php artisan vendor:publish --provider="SaliBhdr\TyphoonCache\ServiceProviders\TyphCacheServiceProvider"
+```php
+php artisan vendor:publish --provider="SaliBhdr\TyphoonCache\ServiceProviders\TyphoonCacheServiceProvider"
 ```
 
 ##### Lumen
@@ -46,20 +53,22 @@ php artisan vendor:publish --provider="SaliBhdr\TyphoonCache\ServiceProviders\Ty
 ----
 
 Register The Service Provider In bootstrap/app.php:
-```sh
+```php
 $app->register(SaliBhdr\TyphoonCache\ServiceProviders\TyphCacheServiceProvider::class);
 ```
-Copy the config file `typhoon-cache.php` manually from the directory `/vendor/salibhdr/typhoonCache/config` to the directory `/config`  (you may need to create this directory).
+Copy the config file `typhoon-cache.php` manually from the directory `/vendor/salibhdr/typhoon-cache/config` to the directory `/config`  (you may need to create this directory).
 
 Register the config file in `bootstrap/app.php`:
 
-```sh
+```php
 $app->configure('typhoon-cache')
 ```
 
+## Configuration
+
 ##### Config file example:
 
-```sh
+```php
 // typhoon-cache.php :
 
 return [
@@ -166,8 +175,8 @@ By using these events typhoon cache is going to cache model data.
 
 First use `CacheableModel` trait in the model that you want to be cached:
 
- ```sh
- <?php
+```php
+
     namespace App;
 
     use Illuminate\Database\Eloquent\Model
@@ -181,7 +190,7 @@ First use `CacheableModel` trait in the model that you want to be cached:
 
 According to config file, add all the model that you want to cache in models array as array key:
 
- ```sh
+ ```php
   // typhoon-cache.php
 
 'models' => [
@@ -194,7 +203,7 @@ According to config file, add all the model that you want to cache in models arr
 
 In the array of every class we have cached-on and delete-on methods. You must add any event that you want to cache happening in cached-on array and if you want to delete cache in any event just add the event in delete-on array. I suggested that you add deleted and forceDeleted in delete-on array only. 
 
- ```sh
+ ```php
   // typhoon-cache.php
 
  App\Book::class => [
@@ -236,7 +245,7 @@ cache storage.
 
 Method 1 will look like this:
 
- ```sh
+ ```php
  // typhoon-cache.php
  
  App\Book::class => [
@@ -251,7 +260,7 @@ Method 1 will look like this:
  
  Method 2 will look like this:
  
-  ```sh
+  ```php
  // typhoon-cache.php
 
   App\Book::class => [
@@ -279,7 +288,7 @@ But feel free to cache model data any way you like.
 
 If model uses softdeletes don't forget to add forceDeleted event in delete-on array and restored in cache-on array:
 
-  ```sh
+  ```php
   // typhoon-cache.php
   
   // If model uses softdelete
@@ -297,7 +306,7 @@ If model uses softdeletes don't forget to add forceDeleted event in delete-on ar
   
   You can specify model config in the model too, this way there is no need to add it in config file :
   
-  ```sh
+  ```php
   // App\Book.php
 
     /**
@@ -325,7 +334,7 @@ If model uses softdeletes don't forget to add forceDeleted event in delete-on ar
 Typhoon cache caches the whole model object into cache storage but if you want to just
 cache some of attributes feel free to specify the cacheable data in toCacheable() method,
 But this is optional. Typhoon cache will do all the hard work, all by it self :
-```sh
+```php
 
 // App\Book.php
       /**
@@ -352,7 +361,7 @@ But this is optional. Typhoon cache will do all the hard work, all by it self :
 
 You can check if the data you retrieved is cached data or the db data with `isCachedData()` method :
 
-```sh
+```php
 
 // In controller
 
@@ -377,7 +386,7 @@ You can check if the data you retrieved is cached data or the db data with `isCa
 
 You can retrieve data directly from cache storage with `retrieveModel()` :
 
- ```sh
+ ```php
  
  // In controller
  
@@ -408,7 +417,7 @@ some data and not for updating data or creating. Because its a cache method on h
 
 Specify routes that you want to be cached in routes in config file:
 
- ```sh
+ ```php
  // typhoon-cache.php :
  
  return [
@@ -428,7 +437,7 @@ setting that you specify in config file.
 
 For more explanations about route config refer to config explanation section above.
 
-### Todos
+## Todos
 
  - Write Tests
  - Add More efficient model data retrieve

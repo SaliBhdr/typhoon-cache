@@ -38,7 +38,7 @@ trait CacheableModel
         if (isset($config['models'][get_class($this)]))
             $this->setCacheModelConfig($config['models'][get_class($this)]);
 
-        if ($config['cache-method'] == TyphCache::dispatcherEventMethod)
+        if ($config['cache-method'] == TyphoonCache::dispatcherEventMethod)
             $this->setDispatchesEvents();
     }
 
@@ -248,7 +248,7 @@ trait CacheableModel
         return $instance->newCollection(array_map(function ($item) use ($instance) {
 
             if ($instance->isCacheActive()) {
-                $cachedData = TyphCache::retrieveModel($instance, $item->id);
+                $cachedData = TyphoonCache::retrieveModel($instance, $item->id);
             }
 
             if (isset($cachedData)) {

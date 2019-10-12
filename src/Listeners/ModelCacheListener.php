@@ -9,7 +9,7 @@
 namespace SaliBhdr\TyphoonCache\Listeners;
 
 use SaliBhdr\TyphoonCache\Events\ModelCacheEvent;
-use SaliBhdr\TyphoonCache\TyphCache;
+use SaliBhdr\TyphoonCache\TyphoonCache;
 
 class ModelCacheListener
 {
@@ -31,7 +31,7 @@ class ModelCacheListener
      */
     public function handle(ModelCacheEvent $event)
     {
-        TyphCache::cacheModel($event->model);
+        TyphoonCache::cacheModel($event->model);
     }
 
 }

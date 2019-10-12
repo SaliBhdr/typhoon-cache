@@ -9,7 +9,7 @@
 namespace SaliBhdr\TyphoonCache\Listeners;
 
 use SaliBhdr\TyphoonCache\Events\ModelDeleteEvent;
-use SaliBhdr\TyphoonCache\TyphCache;
+use SaliBhdr\TyphoonCache\TyphoonCache;
 
 class ModelDeleteListener
 {
@@ -31,6 +31,6 @@ class ModelDeleteListener
      */
     public function handle(ModelDeleteEvent $event)
     {
-        TyphCache::cacheModel($event->model);
+        TyphoonCache::cacheModel($event->model);
     }
 }
