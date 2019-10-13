@@ -29,7 +29,7 @@ class TyphoonCacheServiceProvider extends ServiceProvider
 
         $this->mergeConfigFrom($path, 'typhoon-cache');
 
-        $config = typhConfig();
+        $config = typhoonConfig();
 
         if ($config['cache-method'] == TyphoonCache::dispatcherEventMethod)
             $this->bootEventListeners();

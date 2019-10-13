@@ -21,7 +21,7 @@ Available cache methods in this package:
 ## Installation
 
 #### Install with Composer
-```php
+```sh
  $ composer require salibhdr/typhoon-cache
 ```
 
@@ -39,12 +39,12 @@ After installing the Typhoon Cache library, register the SaliBhdr\TyphoonCache\S
 
      // Other service providers...
      
-     SaliBhdr\TyphoonCache\ServiceProviders\TyphCacheServiceProvider::class,
+     SaliBhdr\TyphoonCache\ServiceProviders\TyphoonCacheServiceProvider::class,
 ],
 ```
 
 Copy the package config to your local config with the publish command:
-```php
+```sh
 php artisan vendor:publish --provider="SaliBhdr\TyphoonCache\ServiceProviders\TyphoonCacheServiceProvider"
 ```
 
@@ -54,7 +54,7 @@ php artisan vendor:publish --provider="SaliBhdr\TyphoonCache\ServiceProviders\Ty
 
 Register The Service Provider In bootstrap/app.php:
 ```php
-$app->register(SaliBhdr\TyphoonCache\ServiceProviders\TyphCacheServiceProvider::class);
+$app->register(SaliBhdr\TyphoonCache\ServiceProviders\TyphoonCacheServiceProvider::class);
 ```
 Copy the config file `typhoon-cache.php` manually from the directory `/vendor/salibhdr/typhoon-cache/config` to the directory `/config`  (you may need to create this directory).
 
@@ -72,7 +72,7 @@ $app->configure('typhoon-cache')
 // typhoon-cache.php :
 
 return [
-    'cache-method' => \SaliBhdr\TyphoonCache\TyphCache::dispatcherEventMethod, // dispatcher,observer (change it to observer if you have another observer trait like laravel scout)
+    'cache-method' => \SaliBhdr\TyphoonCache\TyphoonCache::dispatcherEventMethod, // dispatcher,observer (change it to observer if you have another observer trait like laravel scout)
     'default-cache-ttl' => 60,// Defaults to 1 hour. in minutes || if (null)->default or (-1)->forever
     'is_cache_active' => true,
     'models' => [
@@ -390,7 +390,7 @@ You can retrieve data directly from cache storage with `retrieveModel()` :
  
  // In controller
  
- use SaliBhdr\TyphoonCache\Facades\TyphCache
+ use SaliBhdr\TyphoonCache\Facades\TyphoonCache
  use App\Book
  
        public function getBook(Request $request) 
@@ -400,7 +400,7 @@ You can retrieve data directly from cache storage with `retrieveModel()` :
         // second argument is the records id 
         // third argument (optional) : if is_based_on_user option in config file is set to true
         
-          $book = TyphCache::retrieveModel(Book::class,$request->get('book_id'),auth()->id());
+          $book = TyphoonCache::retrieveModel(Book::class,$request->get('book_id'),auth()->id());
         
         
         dd($book->isCachedData()); // returns true if its cached data

@@ -1,6 +1,6 @@
 {
   "name": "salibhdr/typhoon-cache",
-  "description": "A laravel package for caching model and routes automatically with just few settings",
+  "description": "A laravel package for caching records and route responses automatically with just few settings",
   "license": "MIT",
   "authors": [
     {
@@ -17,6 +17,6 @@
     ]
   },
   "require": {
-    "Illuminate/Support": "~5"
+    "illuminate/support": "~5"
   }
 }
