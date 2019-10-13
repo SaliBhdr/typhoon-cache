@@ -63,7 +63,7 @@ class Cacher
 
     public function setCacheKeyByMiddleware($route = null, $user_id = null)
     {
-        $config = typhConfig();
+        $config = typhoonConfig();
 
         $key = null;
 

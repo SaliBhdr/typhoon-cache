@@ -7,14 +7,15 @@
  */
 
 
-if (!function_exists('typhConfig')) {
+if (!function_exists('typhoonConfig')) {
     /**
      * Get the configuration.
      *
      * @param  string $path
+     * @param null $default
      * @return mixed
      */
-    function typhConfig($path = "",$default = null)
+    function typhoonConfig($path = "",$default = null)
     {
         if ($path && is_string($path)) {
             $path = 'typhoon-cache.' . $path;
@@ -26,7 +27,7 @@ if (!function_exists('typhConfig')) {
     }
 }
 
-if (!function_exists('typhRouteConfig')) {
+if (!function_exists('typhoonRouteConfig')) {
     /**
      * Get the configuration.
      *
@@ -34,7 +35,7 @@ if (!function_exists('typhRouteConfig')) {
      * @param string $route
      * @return mixed
      */
-    function typhRouteConfig(string $route = null, $path = "")
+    function typhoonRouteConfig(string $route = null, $path = "")
     {
 
         if (is_null($route)) {
@@ -47,7 +48,7 @@ if (!function_exists('typhRouteConfig')) {
             $path = 'routes.' . $route;
         }
 
-        return typhConfig($path);
+        return typhoonConfig($path);
     }
 }
 

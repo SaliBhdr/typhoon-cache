@@ -33,7 +33,7 @@ trait CacheableModel
      */
     public function bootCache(): void
     {
-        $config = typhConfig();
+        $config = typhoonConfig();
 
         if (isset($config['models'][get_class($this)]))
             $this->setCacheModelConfig($config['models'][get_class($this)]);
@@ -114,7 +114,7 @@ trait CacheableModel
         }
 
         if (is_null($config)) {
-            $config = typhConfig();
+            $config = typhoonConfig();
         }
 
         if (is_null($this->modelCacheConfig)) {

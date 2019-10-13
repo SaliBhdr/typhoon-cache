@@ -14,13 +14,13 @@ class GeneralHelper
 
     public static function getRouteTtl($route)
     {
-        return typhRouteConfig($route, 'cache-ttl') ?? typhConfig('default-cache-ttl',60);
+        return typhoonRouteConfig($route, 'cache-ttl') ?? typhoonConfig('default-cache-ttl',60);
 
     }
 
     public static function isRouteCacheable($route)
     {
-        $config = typhRouteConfig($route);
+        $config = typhoonRouteConfig($route);
 
         if (!isset($config))
             return false;
